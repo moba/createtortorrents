@@ -2,9 +2,9 @@
 
 TORRENTS=/var/www/mirrors/torrents
 
-for file in `find $TORRENTS -type f`
+for file in `find $TORRENTS -name "*.torrent" -type f`
 do
- magnet=`./torrent2magnet.py $file`
+ magnet=`$(dirname $0)/torrent2magnet.py $file`
  relpathname=${file##$TORRENTS}
  echo ${relpathname%.*} $magnet
 # ${file%.*}
